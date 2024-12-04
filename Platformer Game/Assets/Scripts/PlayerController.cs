@@ -56,10 +56,11 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
         }
-        if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
+        if (Input.GetKeyUp("a") || Input.GetKeyUp("d") || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
         {
             moving = false;
         }
+       
         anim.SetBool("IsMoving", moving);
         transform.position = newPosition;
         transform.localScale = newScale;
