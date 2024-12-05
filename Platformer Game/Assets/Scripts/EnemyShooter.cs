@@ -8,14 +8,26 @@ public class EnemyShooter : MonoBehaviour
     public Transform bulletPos;
 
     private float timer;
+    private GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > 3)
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        Debug.Log(distance);
+        if(distance < 12)
         {
-            timer = 0;
-            shoot();
+            timer += Time.deltaTime;
+
+            if (timer > 3)
+            {
+                timer = 0;
+                shoot();
+            }
         }
     }
 

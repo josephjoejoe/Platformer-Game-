@@ -10,10 +10,10 @@ public class GameController : MonoBehaviour
     {
         startPos = transform.position;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Spike"))
+        if (collision.gameObject.tag.Equals("Spike"))
         {
             Debug.Log("ive died");
             Die();

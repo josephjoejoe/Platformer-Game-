@@ -84,6 +84,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("change scene");
             SceneManager.LoadScene(2);
         }
+        if (collision.gameObject.tag.Equals("ShooterBullet"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
