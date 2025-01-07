@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+   
+
     //Movement Variables
     Rigidbody2D rb;
     public float jumpForce;
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -88,6 +91,13 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(collision.gameObject);
         }
+        // Check if the player collides with an object tagged as "Spike"
+        if (collision.gameObject.CompareTag("Spike"))
+        {
+            // Call the PlayerDied method from GameManager to increment the death count
+            gm.PlayerDied();
+
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -96,5 +106,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
         }
     }
-   
+    
 }
+
